@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
@@ -15,8 +16,9 @@ const Header = () => {
             </form>
           </div>
           <div className="col-md-3 text-end">
-            <button className="btn btn-outline-light me-2">Login</button>
-            <button className="btn btn-primary">Sign Up</button>
+          <Link to="/login" className="btn btn-outline-light me-2">Login</Link>
+            {/* Thay thế nút "Sign Up" bằng Link */}
+            <Link to="/register" className="btn btn-primary">Sign Up</Link>
           </div>
         </div>
         <div className="row">
