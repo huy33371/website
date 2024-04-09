@@ -10,6 +10,6 @@ router.get('/:id', categoryController.getCategoryById);
 router.put('/:id', categoryController.updateCategory);
 router.post('/manufacturer', categoryController.getCategoriesByManufacturer);
 // router.delete('/:id', categoryController.deleteCategory);
-
+router.post('/search', categoryController.handleSearchCategories);
 
 module.exports = router;

@@ -119,8 +119,33 @@ const getCategoriesByManufacturer = async (manufacturer, page, limit ) => {
         console.error('Error getting categories:', error);
         return { EM: 'Internal server error', EC: -1, DT: null };
     }
-}
+};
 
+const searchCategories = async (keyword, page, limit) => {
+    try {
+        const skip = (page - 1) * limit;
+        // Tìm kiếm các trường có chứa từ khóa tìm kiếm, với phân trang
+        const categories = await Category.find({
+            $text: { $search: keyword }
+        }).skip(skip).limit(limit);
+        const totalCategories = await Category.countDocuments({
+            $text: { $search: keyword }
+        });
+        const totalPages = Math.ceil(totalCategories / limit);
+        return { 
+            EM: 'Search categories successfully', 
+            EC: 0, 
+            DT: { categories, totalPages, totalCategories } 
+        };
+    } catch (error) {
+        console.error('Error searching categories:', error);
+        return { 
+            EM: 'Internal server error', 
+            EC: -1, 
+            DT: null 
+        };
+    }
+};
 
 
 module.exports = {
@@ -129,5 +154,6 @@ module.exports = {
     getCategoryById,
     updateCategory,
     getCategoryDetails,
-    getCategoriesByManufacturer
+    getCategoriesByManufacturer,
+    searchCategories
 };

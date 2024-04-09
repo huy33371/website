@@ -14,4 +14,15 @@ const categorySchema = new mongoose.Schema({
     manufacturer: { type: String }
 });
 
+// Tạo chỉ mục văn bản toàn văn cho các trường cần tìm kiếm
+categorySchema.index({
+    name: 'text',
+    description: 'text',
+    storageCapacity: 'text',
+    ram: 'text',
+    chipset: 'text',
+    display: 'text',
+    manufacturer: 'text'
+});
+
 module.exports = mongoose.model('Category', categorySchema);

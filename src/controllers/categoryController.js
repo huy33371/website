@@ -97,6 +97,25 @@ const getCategoriesByManufacturer = async (req, res) => {
     }
 };
 
+const handleSearchCategories = async (req, res) => {
+    try {
+        const { keyword } = req.body;
+        const { page, limit } = req.query;
+        const data = await categoryService.searchCategories(keyword, page, limit);
+        return res.status(200).json({
+            EM: data.EM,
+            EC: data.EC,
+            DT: data.DT
+        });
+    } catch (error) {
+        console.error('Error searching categories:', error);
+        return res.status(500).json({
+            EM: 'Internal server error',
+            EC: -1,
+            DT: null
+        });
+    }
+};
 
 
 module.exports = {
@@ -104,5 +123,6 @@ module.exports = {
     createCategory,
     getCategoryById,
     updateCategory,
-    getCategoriesByManufacturer
+    getCategoriesByManufacturer,
+    handleSearchCategories
 };
