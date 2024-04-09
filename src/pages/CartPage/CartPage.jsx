@@ -11,6 +11,9 @@ const CartPage = () => {
     const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
     const totalPrice = cartItems.reduce((total, item) => total + item.discountPrice * item.quantity, 0);
 
+    const currentUser = useSelector(state => state.user.currentUser);
+    const isLoggedIn = useSelector(state => state.user.isLoggedIn);
+
     const navigate = useNavigate();
 
     const handleOrder = () => {
@@ -18,7 +21,13 @@ const CartPage = () => {
             toast.info('Giỏ hàng trống');
             return;
         }
+        if( !currentUser || !isLoggedIn) {
+            toast.info('Chưa đăng nhập!');
+            navigate('/login');
+            return;
+        }
         // Xử lý đặt hàng ở đây
+        navigate('/order-confirm');
     }
 
     return (

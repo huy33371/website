@@ -11,11 +11,11 @@ const CartDetailCard = ({ item }) => {
     };
 
     const minusOneProduct = (itemCart) => {
-        dispatch(removeFromCart(itemCart.id));
+        dispatch(removeFromCart(itemCart._id));
     };
 
-    const deleteCartDetail = (id) => {
-        dispatch(deleteFromCart(id));
+    const deleteCartDetail = (_id) => {
+        dispatch(deleteFromCart(_id));
     };
 
     // Tính giá tiền của sản phẩm
@@ -33,7 +33,7 @@ const CartDetailCard = ({ item }) => {
                 <FaMinus className="icon-update-cart" onClick={() => minusOneProduct(item)} /> 
             </div>
             <div className="cart-detail-price">{totalPrice} VNĐ</div> {/* Hiển thị giá tiền */}
-            <FaTrashAlt className="icon-update-cart" onClick={() => deleteCartDetail(item.id)} />
+            <FaTrashAlt className="icon-update-cart" onClick={() => deleteCartDetail(item._id)} />
         </>
     );
 };
