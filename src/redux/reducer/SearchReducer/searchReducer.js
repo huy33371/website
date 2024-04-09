@@ -1,8 +1,12 @@
-import { SEARCH_CUSTOMIZE } from '../../actions/SearchAction/searchActionTypes';
+import { SEARCH_CUSTOMIZE, SEARCH_NORMAL } from '../../actions/SearchAction/searchActionTypes';
 
 // Trạng thái ban đầu
 const initialState = {
-    resultSearch: []
+    resultSearchCustom: [],
+    resultSearchNormal: [],
+    totalPagesSearchNormal: 0,
+    totalResultSearchNormal: 0,
+    keywordNormal: ''
 };
 
 const searchReducer = (state = initialState, action) => {
@@ -10,7 +14,15 @@ const searchReducer = (state = initialState, action) => {
         case SEARCH_CUSTOMIZE:
             return {
                 ...state,
-                resultSearch: action.payload,
+                resultSearchCustom: action.payload,
+            };
+        case SEARCH_NORMAL:
+            return {
+                ...state,
+                resultSearchNormal: action.payload.categories,
+                totalPagesSearchNormal: action.payload.totalPages,
+                totalResultSearchNormal: action.payload.totalResult,
+                keywordNormal: action.payload.keyword,
             };
         default:
             return state;

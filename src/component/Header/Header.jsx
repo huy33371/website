@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { FaShoppingCart } from 'react-icons/fa';
 import 'bootstrap/js/dist/dropdown';
+import { toast } from 'react-toastify';
+import { searchCategoriesNormalAction } from '../../redux/actions/SearchAction/searchAction';
 
 const Header = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const [keyword, setKeyword] = useState('');
+
+  const handleInputChange = (e) => {
+      setKeyword(e.target.value);
+  };
 
   // Sử dụng hook useSelector để lấy thông tin đăng nhập từ store Redux
   const isLoggedIn = useSelector(state => state.user.isLoggedIn);
@@ -23,6 +32,15 @@ const Header = () => {
     navigate('/login');
   };
 
+  const handleSearchNormal = async () => {
+    if(!keyword) {
+      toast.error("Chưa nhập từ khóa tìm kiếm");
+      return;
+    }
+    await dispatch(searchCategoriesNormalAction(keyword, +1));
+    navigate('/result-search');
+  };  
+
   return (
     <header className="bg-dark text-light py-3">
       <div className="container">
@@ -32,8 +50,8 @@ const Header = () => {
           </div>
           <div className="col-md-6">
             <form className="input-group">
-              <input type="text" className="form-control" placeholder="Search phones..." />
-              <button className="btn btn-outline-light" type="button">Search</button>
+              <input type="text" className="form-control" placeholder="Search phones..." value={keyword} onChange={handleInputChange}/>
+              <button className="btn btn-outline-light" type="button" onClick={handleSearchNormal}>Search</button>
             </form>
           </div>
           <div className="col-md-3 text-end">

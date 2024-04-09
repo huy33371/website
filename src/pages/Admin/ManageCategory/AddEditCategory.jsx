@@ -24,23 +24,18 @@ const AddEditCategory = () => {
         specialProduct: false,
         manufacturer: '',
     });
-    const [ listManufacturers, setListManufacturers ] = useState([]);
     const [imagePreview, setImagePreview] = useState('');
-    const manufacturers = useSelector(state => state.manufacturer.listManufacturers);
+    const listManufacturers = useSelector(state => state.manufacturer.listManufacturers);
 
     useEffect(() => {
-        console.log("dddddd")
-        if (!manufacturers || manufacturers.length === 0) {
+        if (!listManufacturers || listManufacturers.length === 0) {
             fetchManufacturers();
         }
-        else {
-            setListManufacturers(manufacturers);
-        }
-    }, [dispatch, manufacturers]);
+
+    }, [dispatch, listManufacturers]);
 
     const fetchManufacturers = async() => {
         await dispatch(getAllManufacturersActions());
-        setListManufacturers(manufacturers);
     }
 
     useEffect(() => {

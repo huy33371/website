@@ -5,4 +5,8 @@ const searchCustomize = (dataSearch) => {
     return axios.post(`${baseURL}/search/customize`, dataSearch);
 }
 
-export { searchCustomize };
+const searchCategoriesNormal = (keyword, currentPage) => {
+    return axios.post(`${baseURL}/categories/search?page=${currentPage}&limit=4`, {keyword: keyword});
+}
+
+export { searchCustomize, searchCategoriesNormal };

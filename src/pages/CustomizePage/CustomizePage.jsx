@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import ProductCard from '../../component/ProductCard/ProductCard';
 
 const CustomizePage = () => {
-    const resultSearch = useSelector(state => state.search.resultSearch);
+    const resultSearch = useSelector(state => state.search.resultSearchCustom);
     
     useEffect(() => {
         console.log("check result search: ", resultSearch);

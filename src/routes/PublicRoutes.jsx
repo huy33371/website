@@ -6,6 +6,7 @@ import CartPage from '../pages/CartPage/CartPage';
 import HomePage from '../pages/HomePage/HomePage';
 import CustomizePage from '../pages/CustomizePage/CustomizePage';
 import ProductsPage from '../pages/ProductsPage/ProductsPage';
+import ResultSearchNormalPage from '../pages/ResultSearchNormalPage/ResultSearchNormalPage';
 
 const PublicRoutes = () => {
   return (
@@ -16,6 +17,7 @@ const PublicRoutes = () => {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/customize" element={<CustomizePage />} />
         <Route path="/products" element={<ProductsPage />} />
+        <Route path="/result-search" element={<ResultSearchNormalPage />} />
         <Route path="/" element={<HomePage />} />
       </Routes>
     </PublicLayout>
