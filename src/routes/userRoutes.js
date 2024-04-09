@@ -1,10 +1,12 @@
-const express = require('express');
+import express from "express";
 const router = express.Router();
-const userController = require('../controllers/userController');
+import userController from '../controllers/userController';
 
 // Định nghĩa các route
-router.post('/', userController.createUser);
-router.put('/:id', userController.updateUser);
-router.delete('/:id', userController.deleteUser);
+router.post('/register', userController.handleRegister);
+router.post('/login', userController.handleLogin);
+// router.post('/', userController.createUser);
+// router.put('/:id', userController.updateUser);
+// router.delete('/:id', userController.deleteUser);
 
 module.exports = router;

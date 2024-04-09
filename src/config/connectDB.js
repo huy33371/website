@@ -6,6 +6,7 @@ import BillDetailModel from '../models/billDetailSchema';
 import BillModel from '../models/billSchema';
 import CategoryModel from '../models/categorySchema';
 import GroupModel from '../models/groupSchema';
+import ManufacturerModel from '../models/manufacturerSchema';
 
 dotenv.config();
 
@@ -23,7 +24,8 @@ const connectDB = async () => {
             BillDetailModel.init(),
             BillModel.init(),
             CategoryModel.init(),
-            GroupModel.init()
+            GroupModel.init(),
+            ManufacturerModel.init()
         ]);
 
         console.log('Tables initialized successfully');

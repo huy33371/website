@@ -10,7 +10,8 @@ const categorySchema = new mongoose.Schema({
     display: { type: String }, // Màn hình
     price: { type: Number },
     discountPrice: { type: Number }, // Giá khuyến mãi cho toàn bộ danh mục
-    specialProduct: { type: Boolean } // Trạng thái sản phẩm đặc biệt cho toàn bộ danh mục
+    specialProduct: { type: Boolean },
+    manufacturer: { type: String }
 });
 
 module.exports = mongoose.model('Category', categorySchema);
