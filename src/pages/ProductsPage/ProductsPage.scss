@@ -1,0 +1,11 @@
+.products-container {
+    display: flex;
+
+    .products-filter {
+        width: 30%;
+    }
+
+    .products-content {
+        width: 70%;
+    }
+}

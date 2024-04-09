@@ -1,0 +1,25 @@
+.admin-menu-left-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #01B54A;
+    height: 100%;
+    width: 100%;
+    padding: 20px 10px;
+
+    .item-menu {
+        display: flex;
+        align-items: center;
+        background-color: #00A541;
+        color: white;
+        cursor: pointer;
+        padding-top: 10px;
+        padding-left: 10px;
+        text-decoration: none;
+        border-radius: 10px;
+        margin: 3px 5px;
+    }
+
+    .active {
+        background-color: #008539;
+    }
+}

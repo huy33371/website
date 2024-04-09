@@ -1,0 +1,62 @@
+.manage-category-container {
+    .table-manage-category {
+        .col-name {
+            max-width: 100px;
+        }
+
+        .col-img {
+            max-width: 80px;
+        }
+
+        .col-des {
+            max-width: 200px;
+        }
+
+        .col-storage {
+            max-width: 100px;
+        }
+
+        .col-ram {
+            max-width: 50px;
+        }
+
+        .col-chip {
+            max-width: 50px;
+        }
+
+        .col-display {
+            max-width: 100px;
+        }
+
+        .col-price {
+            max-width: 100px;
+        }
+
+        .col-discount {
+            max-width: 100px;
+        }
+
+        .col-manu {
+            max-width: 100px;
+        }
+
+        .col-specia {
+            max-width: 70px;
+        }
+
+        .col-action {
+            max-width: 150px;
+        }
+    }
+
+    th, td {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    img {
+        max-width: 50px;
+        height: auto;
+    }
+}

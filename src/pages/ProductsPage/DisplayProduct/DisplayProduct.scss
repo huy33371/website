@@ -1,0 +1,17 @@
+.display-container {
+    margin: 50px 0;
+    border: 1px solid gray;
+
+    h3 {
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+
+    .display-product {
+        display: flex;
+        gap: 50px;
+        margin-top: 20px;
+        padding-left: 50px;
+        
+    }
+}

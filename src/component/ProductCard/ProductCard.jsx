@@ -1,19 +1,57 @@
 import React from 'react';
-import './ProductCard.scss'; // Import file SCSS
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../redux/actions/CartActioin/cartActions';
+import './ProductCard.scss';
+import { FiSmartphone, FiCpu  } from 'react-icons/fi';
+import { FaHdd, FaMemory  } from 'react-icons/fa';
 
-const ProductCard = ({ image, name, description, originalPrice, salePrice }) => {
+const ProductCard = ({ product }) => {
+  const dispatch = useDispatch();
+
+  // Kiểm tra nếu product không tồn tại, return null để không render component
+  if (!product) return null;
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(product));
+  };
+
   return (
-    <div className="card product-card">
-      <img src={image} className="card-img-top product-card__image" alt={name} />
-      <div className="card-body">
-        <h5 className="card-title product-card__name">{name}</h5>
-        <p className="card-text product-card__description">{description}</p>
-        <p className="card-text product-card__price">
-          <span className="product-card__original-price">{originalPrice}</span>
-          <span className="product-card__sale-price">{salePrice}</span>
-        </p>
-        <button className="btn btn-primary product-card__button">Add to Cart</button>
+    <div className="product-card-container">
+      <div className='product-img'>
+        <img src={product.image} className="card-image" alt={product.name} />
       </div>
+      <div className="product-info">
+        <p className="product-title">{product.name}</p>
+        <div className="product-price">
+          <span className="sale-price">{product.discountPrice}$</span>
+        </div>
+        <div className='product-param-container'>
+          <span className='product-paramter'>
+              <span className='param'>
+                <FaHdd className='param-icon'/>
+                <p>{product.storageCapacity}</p>
+              </span>
+              <span className='param'>
+                <FaMemory className='param-icon'/>
+                <p>{product.ram}</p>
+              </span>
+              <span className='param'>
+                <FiCpu className='param-icon'/>
+                <p>{product.chipset}</p>
+              </span>
+          </span>
+          <span className='product-paramter'>
+            <span className='param'>
+                <FiSmartphone className='param-icon'/>
+                <p>{product.display}</p>
+              </span>
+          </span>
+        </div>
+      </div>
+      <div className='product-btn'>
+          <button onClick={handleAddToCart} className="btn-add-cart">Mua ngay</button>
+          <button className="btn-compare">So sánh</button>
+        </div>
     </div>
   );
 };

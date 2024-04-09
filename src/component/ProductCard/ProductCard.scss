@@ -1,45 +1,106 @@
-.product-card {
-    width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    overflow: hidden;
-    margin: 10px;
-    padding: 30px;
+.product-card-container {
+  width: 220px;
+  height: 420px;
+  position: relative;
+  cursor: pointer;
+  border-radius: 7px;
+  padding: 5px;
   
-    .product-card__image {
+
+  .product-img {
+    border-radius: 5px;
+    border: 1px solid red;
+    .card-image {
       width: 100%;
-      // height: 200px;
-      object-fit: cover; /* Hiển thị ảnh mà không biến đổi tỷ lệ khung hình */
-    }
-  
-    .product-card__name {
-      font-size: 1.2rem;
-      font-weight: bold;
-      margin-bottom: 0.5rem;
-    }
-  
-    .product-card__description {
-      font-size: 1rem;
-      color: #666;
-    }
-  
-    .product-card__price {
-      margin-top: 1rem;
-    }
-  
-    .product-card__original-price {
-      text-decoration: line-through;
-      margin-right: 0.5rem;
-    }
-  
-    .product-card__sale-price {
-      color: red;
-      font-weight: bold;
-    }
-  
-    .product-card__button {
-      width: 100%;
-      margin-top: 1rem;
+      padding: 10px;
     }
   }
   
+
+  .product-info {
+    .product-title {
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    .product-price {
+      .sale-price {
+        font-size: 20px;
+        font-weight: 800;
+        color: red;
+      }
+    }
+
+    .product-param-container {
+      background-color: #F8F9FA;
+      padding: 7px;
+      .product-paramter {
+        display: flex;
+        gap: 20px;
+        .param {
+          display: flex;
+          gap: 5px;
+          .param-icon {
+            font-size: 14px;
+            margin-top: 5px;
+          }
+        }
+      }
+    }
+  }
+
+  .btn-add-cart {
+    background-color: #CD1818;
+    border-radius: 5px;
+    border: none;
+    height: 35px;
+    width: 110px;
+    color: white;
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 3%;
+    transform: translateX(0%);
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  .btn-compare {
+    background-color: #6C757D;
+    border-radius: 5px;
+    border: none;
+    height: 35px;
+    width: 80px;
+    color: white;
+    display: none;
+    position: absolute;
+    bottom: 0;
+    right: 3%;
+    transform: translateX(0%);
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &:hover .btn-add-cart {
+    display: block;
+  }
+
+  &:hover .btn-compare {
+    display: block;
+  }
+
+  &:hover .card-image {
+    scale: 1.08;
+  }
+
+  .btn-add-cart,
+  .btn-compare,
+  .card-image {
+    transition: all 1s ease;
+  }
+
+}
